@@ -1,0 +1,2 @@
+
+		__FK_FieldName__ = LanguageManager.GetLangVal("__FK_TypeName_____FK_FieldName___" + __FK_IdxName__);

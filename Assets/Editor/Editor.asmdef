@@ -1,0 +1,26 @@
+{
+    "name": "Editor",
+    "rootNamespace": "",
+    "references": [
+        "YooAsset.Editor",
+        "HybridCLR.Editor",
+        "Main",
+        "YooAsset",
+        "Log",
+        "Luban.Runtime",
+        "Unity.TextMeshPro",
+        "Unity.TextMeshPro.Editor",
+        "HotUpdate"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

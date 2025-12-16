@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/Assets/Scripts/Launcher/Main.asmdef.meta
+guid: 01ec72030d531804d924d7882276c311
+========
+guid: 17f495d31df1b4f1c90363273beccc77
+>>>>>>>> core:UnityProject/CustomPackages/NativeTrees/Runtime/bartofzo.nativetrees.asmdef.meta
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,23 @@
+{
+    "name": "HotUpdate",
+    "rootNamespace": "",
+    "references": [
+        "LeoEcsLite",
+        "YooAsset",
+        "Log",
+        "Luban.Runtime",
+        "Unity.TextMeshPro",
+        "UniTask",
+        "Main",
+        "Cinemachine"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

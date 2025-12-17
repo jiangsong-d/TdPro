@@ -1,0 +1,139 @@
+syntax = "proto3";
+
+package towerdefense;
+option csharp_namespace = "TowerDefense.Proto";
+option go_package = "towerdefense/proto";
+
+import "common.proto";
+
+// ========== 战斗相关消息 ==========
+
+// 放置防御塔请求
+message PlaceTowerRequest {
+  int32 tower_type = 1;
+  Vector3 position = 2;
+}
+
+// 放置防御塔响应
+message PlaceTowerResponse {
+  bool success = 1;
+  string tower_id = 2;
+  int32 tower_type = 3;
+  Vector3 position = 4;
+  int32 gold = 5;             // 剩余金币
+  string message = 6;
+}
+
+// 升级防御塔请求
+message UpgradeTowerRequest {
+  string tower_id = 1;
+}
+
+// 升级防御塔响应
+message UpgradeTowerResponse {
+  bool success = 1;
+  string tower_id = 2;
+  int32 level = 3;
+  int32 cost = 4;             // 升级花费
+  int32 gold = 5;             // 剩余金币
+  string message = 6;
+}
+
+// 出售防御塔请求
+message SellTowerRequest {
+  string tower_id = 1;
+}
+
+// 出售防御塔响应
+message SellTowerResponse {
+  bool success = 1;
+  string tower_id = 2;
+  int32 refund = 3;           // 返还金币
+  int32 gold = 4;             // 剩余金币
+  string message = 5;
+}
+
+// 使用技能请求
+message UseSkillRequest {
+  int32 skill_id = 1;
+  Vector3 target_position = 2;
+  string target_id = 3;       // 目标ID（敌人或塔）
+}
+
+// 使用技能响应
+message UseSkillResponse {
+  bool success = 1;
+  int32 skill_id = 2;
+  string message = 3;
+}
+
+// 波次开始广播
+message WaveStartBroadcast {
+  int32 wave_num = 1;
+  int32 enemy_count = 2;      // 本波敌人数量
+  int32 total_waves = 3;      // 总波数
+  int32 prepare_time = 4;     // 准备时间(秒)
+}
+
+// 波次完成广播
+message WaveCompleteBroadcast {
+  int32 wave_num = 1;
+  int32 reward = 2;
+  int32 kill_count = 3;       // 击杀数
+  int32 total_damage = 4;     // 总伤害
+  bool is_perfect = 5;        // 是否完美通关（无漏怪）
+  int32 bonus_reward = 6;     // 额外奖励
+}
+
+// 游戏结束广播
+message GameOverBroadcast {
+  bool is_victory = 1;
+  int32 total_waves = 2;
+  int32 kill_count = 3;
+  int64 total_damage = 4;
+  int32 score = 5;
+  
+  // 各玩家统计
+  repeated PlayerGameStats player_stats = 6;
+  
+  // 奖励
+  GameReward reward = 7;
+}
+
+// 玩家游戏统计
+message PlayerGameStats {
+  string player_id = 1;
+  string player_name = 2;
+  int32 kill_count = 3;
+  int64 total_damage = 4;
+  int32 tower_count = 5;      // 建造塔数量
+  int32 gold_earned = 6;      // 获得金币
+  int32 gold_spent = 7;       // 花费金币
+  int32 score = 8;
+}
+
+// 游戏奖励
+message GameReward {
+  int32 coin = 1;             // 游戏币
+  int32 exp = 2;              // 经验
+  repeated ItemReward items = 3; // 道具奖励
+}
+
+// 道具奖励
+message ItemReward {
+  int32 item_id = 1;
+  int32 item_count = 2;
+  string item_name = 3;
+}
+
+// 暂停游戏请求
+message PauseGameRequest {
+  bool is_pause = 1;
+}
+
+// 暂停游戏响应
+message PauseGameResponse {
+  bool success = 1;
+  bool is_pause = 2;
+  string message = 3;
+}

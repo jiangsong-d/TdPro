@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+package towerdefense;
+option csharp_namespace = "TowerDefense.Proto";
+option go_package = "towerdefense/proto";
+
+import "common.proto";
+
+// ========== 房间相关消息 ==========
+
+// 玩家信息
+message PlayerInfo {
+  string player_id = 1;
+  string player_name = 2;
+  int32 level = 3;
+  bool is_ready = 4;
+  bool is_host = 5;
+  int32 avatar_id = 6;        // 头像ID
+  string status = 7;          // 状态: waiting/ready/playing
+}
+
+// 房间信息
+message RoomInfo {
+  string room_id = 1;
+  string room_name = 2;
+  int32 level_id = 3;
+  int32 max_player = 4;
+  int32 current_player = 5;
+  string status = 6;          // waiting/playing/finished
+  string host_id = 7;
+  repeated PlayerInfo players = 8;
+  int64 create_time = 9;
+  bool is_private = 10;       // 是否私有房间
+  string password = 11;       // 房间密码
+}
+
+// 创建房间请求
+message CreateRoomRequest {
+  string room_name = 1;
+  int32 max_player = 2;
+  int32 level_id = 3;
+  bool is_private = 4;        // 是否私有
+  string password = 5;        // 房间密码
+}
+
+// 创建房间响应
+message CreateRoomResponse {
+  bool success = 1;
+  string room_id = 2;
+  RoomInfo room_info = 3;
+  string message = 4;
+}
+
+// 加入房间请求
+message JoinRoomRequest {
+  string room_id = 1;
+  string password = 2;        // 密码（如果需要）
+}
+
+// 加入房间响应
+message JoinRoomResponse {
+  bool success = 1;
+  string room_id = 2;
+  RoomInfo room_info = 3;
+  string message = 4;
+}
+
+// 离开房间请求
+message LeaveRoomRequest {
+  string room_id = 1;
+  string reason = 2;          // 离开原因
+}
+
+// 离开房间响应
+message LeaveRoomResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// 房间信息广播
+message RoomInfoBroadcast {
+  RoomInfo room_info = 1;
+  string event_type = 2;      // 事件类型: player_join/player_leave/player_ready/status_change
+  string trigger_player_id = 3; // 触发事件的玩家ID
+}
+
+// 准备/取消准备请求
+message ReadyRequest {
+  bool is_ready = 1;
+}
+
+// 准备响应
+message ReadyResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// 开始游戏请求
+message StartGameRequest {
+  string room_id = 1;
+}
+
+// 波次信息
+message WaveInfo {
+  int32 wave_num = 1;
+  repeated int32 enemy_types = 2;
+  repeated int32 enemy_counts = 3;
+  int32 reward = 4;
+  int32 difficulty = 5;       // 难度系数
+}
+
+// 游戏初始化数据
+message GameInitData {
+  int32 gold = 1;
+  int32 life = 2;
+  string map_data = 3;
+  repeated WaveInfo wave_info = 4;
+  repeated Vector3 path_points = 5;  // 路径点
+  int32 total_waves = 6;
+}
+
+// 开始游戏响应
+message StartGameResponse {
+  bool success = 1;
+  int32 level_id = 2;
+  GameInitData game_data = 3;
+  string message = 4;
+  int64 start_time = 5;       // 游戏开始时间
+}
+
+// 房间列表请求
+message RoomListRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+  int32 level_id = 3;         // 筛选关卡，0表示全部
+}
+
+// 房间列表响应
+message RoomListResponse {
+  repeated RoomInfo rooms = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+}

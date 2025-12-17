@@ -1,8 +1,5 @@
+@echo off
 
-
-..\Tools\protoc\bin\protoc.exe --csharp_out=../../Assets/HotUpdate/HotScripts/Protoc  ./proto/*.proto
-
-
+..\Tools\protoc\bin\protoc.exe --csharp_out=../../Assets/HotUpdate/Protoc --proto_path=proto proto/*.proto
 
 pause
-

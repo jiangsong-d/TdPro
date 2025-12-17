@@ -69,19 +69,21 @@
     <Compile Include="Assets\HotUpdate\UIFrameWork\Loading\GameExitStep.cs" />
     <Compile Include="Assets\HotUpdate\Config\Tables.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\BaseUIItem.cs" />
-    <Compile Include="Assets\HotUpdate\Network\AccountService.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Guide\GuideData.cs" />
+    <Compile Include="Assets\HotUpdate\Network\HttpClient.cs" />
     <Compile Include="Assets\HotUpdate\tool\CameraController.cs" />
+    <Compile Include="Assets\HotUpdate\Common\Cmd.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Guide\GuideDefine.cs" />
     <Compile Include="Assets\HotUpdate\Event\EventID.cs" />
     <Compile Include="Assets\HotUpdate\Config\Building\TbBuildingConfig.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\Common\AorEmptyGraphic.cs" />
+    <Compile Include="Assets\HotUpdate\Protoc\Battle.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\ListView\LoopListItemPool.cs" />
-    <Compile Include="Assets\HotUpdate\Network\TDNetworkManager.cs" />
     <Compile Include="Assets\HotUpdate\Engine\YImage.cs" />
     <Compile Include="Assets\HotUpdate\Common\CountInputField.cs" />
     <Compile Include="Assets\HotUpdate\TimeTool\Timer.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Condition\ConditionScripts\PlayerVipLevelChecker.cs" />
+    <Compile Include="Assets\HotUpdate\Protoc\Common.cs" />
     <Compile Include="Assets\HotUpdate\TimeTool\TimerManager.cs" />
     <Compile Include="Assets\HotUpdate\Event\EngineEventManager.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\LoadManager.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Assets\HotUpdate\Common\LoopListViewHelp.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Guide\View\DialogGuideView.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Guide\GuideManager.cs" />
+    <Compile Include="Assets\HotUpdate\Protoc\Room.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\Loading\LoadingMainCityStep.cs" />
     <Compile Include="Assets\HotUpdate\Game\Login\LoginView.cs" />
     <Compile Include="Assets\HotUpdate\Config\Building\BuildingUpgradeConfig.cs" />
@@ -105,13 +108,13 @@
     <Compile Include="Assets\HotUpdate\Config\Guide\GuideConfig.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Guide\GuideStepExecutor.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\ListView\LoopListView.cs" />
-    <Compile Include="Assets\HotUpdate\Network\TDNetworkExample.cs" />
     <Compile Include="Assets\HotUpdate\PoolTool\CachePool.cs" />
     <Compile Include="Assets\HotUpdate\Game\MainView\MainView.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\GridView\GridItemGroup.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\BaseScene.cs" />
     <Compile Include="Assets\HotUpdate\Event\EngineEvent.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\UIManager.cs" />
+    <Compile Include="Assets\HotUpdate\Network\WebSocketClient.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\UIData.cs" />
     <Compile Include="Assets\HotUpdate\Game\MainCity\MainCityScene.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\BaseViewComponent.cs" />
@@ -120,11 +123,11 @@
     <Compile Include="Assets\HotUpdate\Config\Guide\GuideResConfig.cs" />
     <Compile Include="Assets\HotUpdate\Engine\TMPTextPro.cs" />
     <Compile Include="Assets\HotUpdate\Config\Condition\ConditionConfig.cs" />
-    <Compile Include="Assets\HotUpdate\Network\NetworkLoginExample.cs" />
     <Compile Include="Assets\HotUpdate\Engine\IGrayMember.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\GridView\LoopGridViewItem.cs" />
     <Compile Include="Assets\HotUpdate\TimeTool\TimeUtil.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameManager.cs" />
+    <Compile Include="Assets\HotUpdate\Network\NetworkManager.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\GridView\LoopGridView.cs" />
     <Compile Include="Assets\HotUpdate\Config\Tblanguage.cs" />
     <Compile Include="Assets\HotUpdate\Engine\ButtonPro.cs" />
@@ -150,9 +153,11 @@
     <Compile Include="Assets\HotUpdate\Config\languagePack.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\ListView\LoopListViewItem.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\ConfigManager.cs" />
+    <Compile Include="Assets\HotUpdate\Protoc\Sync.cs" />
     <Compile Include="Assets\HotUpdate\Config\Building\TbBuildingUpgradeConfig.cs" />
     <Compile Include="Assets\HotUpdate\Config\language.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\Loading\ILoadingStep.cs" />
+    <Compile Include="Assets\HotUpdate\Protoc\Connection.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\GameSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -565,6 +570,18 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Plugins\websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Assets\Plugins\Protobuf\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+      <HintPath>Assets\Plugins\Protobuf\Google.Protobuf.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

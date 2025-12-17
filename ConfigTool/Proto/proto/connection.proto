@@ -1,0 +1,61 @@
+syntax = "proto3";
+option csharp_namespace = "TowerDefense.Proto";
+option go_package = "towerdefense/proto";
+
+// ========== 连接相关消息 ==========
+
+// 心跳请求
+message HeartbeatRequest {
+  int64 timestamp = 1;
+  string client_version = 2;  // 客户端版本号
+}
+
+// 心跳响应
+message HeartbeatResponse {
+  int64 timestamp = 1;
+  int64 server_time = 2;      // 服务器时间
+  int32 ping = 3;             // 延迟(ms)
+}
+
+// 登录请求
+message LoginRequest {
+  string player_id = 1;
+  string player_name = 2;
+  string token = 3;
+  string device_id = 4;       // 设备ID
+  string platform = 5;        // 平台: iOS/Android/PC
+}
+
+// 登录响应
+message LoginResponse {
+  bool success = 1;
+  string player_id = 2;
+  string player_name = 3;
+  string session_id = 4;      // 会话ID
+  string message = 5;
+  
+  // 玩家基础信息
+  PlayerBaseInfo player_info = 6;
+}
+
+// 玩家基础信息
+message PlayerBaseInfo {
+  string player_id = 1;
+  string player_name = 2;
+  int32 level = 3;
+  int32 exp = 4;
+  int32 coin = 5;             // 游戏币
+  int32 diamond = 6;          // 钻石
+  int64 last_login_time = 7;
+}
+
+// 登出请求
+message LogoutRequest {
+  string reason = 1;          // 登出原因
+}
+
+// 登出响应
+message LogoutResponse {
+  bool success = 1;
+  string message = 2;
+}

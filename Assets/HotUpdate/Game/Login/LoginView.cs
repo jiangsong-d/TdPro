@@ -8,9 +8,23 @@ public class LoginView : BaseUIView
     public override void OnCreate()
     {
         base.OnCreate();
+
+        AccountServiceManager.Instance.OnLocalAccountCheck += OnLocalAccountCheck;
+        AccountServiceManager.Instance.CheckLocalAccount();
     }
     public override void OnRefresh()
     {
+    }
+    private void OnLocalAccountCheck(bool hasAccount)
+    {
+        if (hasAccount)
+        {
+            AccountServiceManager.Instance.LoginWithLocalAccount();
+        }
+        else
+        {
+               UIManager.Instance.OpenWindow<AccountSignView>("AccountSignView");
+        }
     }
     public override void OnClickBtn(ButtonPro btn)
     {

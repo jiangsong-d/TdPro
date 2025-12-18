@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Threading;
+using UnityEngine;
 
 /// <summary>
 /// 游戏初始化启动
@@ -26,25 +28,36 @@ public class GameInitStep : GameSingleton<GameInitStep>, ILoadingStep
         yield return null ;
         
         // 初始化登录模块
-        // LoginManager.Instance.Init();
+        LoginManager.Instance.Init();
         // LoginNet.Instance.Init();
         // LoginManager.Instance.ConnectLoginServer();
-       
+        
+        ModelName = "游戏初始化中...";
+
         Progress = 0.2f;
         yield return null;
         
         Progress = 0.3f;
-        yield return null ;
+        yield return new WaitForSeconds(0.2f) ;
         Progress = 0.5f;
-        yield return null ;
-
+        yield return  new WaitForSeconds(0.2f) ;
+      
         Progress = 0.7f;
         
-        yield return null ;
+        yield return new WaitForSeconds(0.2f) ;
         Progress = 0.8f;
-        yield return null ;
+        yield return new WaitForSeconds(0.2f) ;
+           ModelName = "正在连接服务器";
+         while(!LoginManager.Instance.isConnectionAccountServer)
+           {
+               yield return null ;
+           }
+        yield return new WaitForSeconds(0.5f) ;
         Progress = 0.9f;
-        yield return null ;
+        ModelName = "连接服务器成功";
+        yield return  new WaitForSeconds(0.5f) ;
+       
+        
         OnComplete();
     }
     public void OnComplete()

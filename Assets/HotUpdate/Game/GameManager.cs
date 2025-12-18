@@ -104,6 +104,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         // 使用IsInstance检查避免在OnDestroy中重新创建单例
         SceneManager.Instance.CloseAllScenes();
+        LoginManager.Instance.OnDestroy();
+        // UIManager.Instance.OnDestroy();
     }
 
     private void OnApplicationQuit()

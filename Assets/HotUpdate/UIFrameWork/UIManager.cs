@@ -714,7 +714,7 @@ public class UIManager : MonoSingleton<UIManager>
         BlurViewMap.Clear();
     }
 
-    private void OnDestroy()
+    public  void OnDestroy()
     {
         Dispose();
     }

@@ -10,6 +10,7 @@ public class UIConfigManager
 
         //NormalUI
         { "LoginView", new UIConfig("LoginView", "Prefabs/Login/LoginView", EUIType.NormalUI, "", 0, true, false, false, false,"")},
+        { "AccountSignView", new UIConfig("AccountSignView", "Prefabs/Login/AccountSignView", EUIType.NormalUI, "", 0, false, false, false, false,"")},
         { "MainView", new UIConfig("MainView", "Prefabs/MainView/MainView", EUIType.NormalUI, "", 0, true, false, false, false,"")},
        
     };

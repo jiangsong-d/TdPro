@@ -91,6 +91,7 @@
     <Compile Include="Assets\HotUpdate\UIFrameWork\UnitData.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\BaseUIView.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Condition\IConditionChecker.cs" />
+    <Compile Include="Assets\HotUpdate\Network\AccountServiceManager.cs" />
     <Compile Include="Assets\HotUpdate\Config\Guide\TbGuideResConfig.cs" />
     <Compile Include="Assets\HotUpdate\Common\JsonHelp.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\UINodeSingleton.cs" />
@@ -123,8 +124,10 @@
     <Compile Include="Assets\HotUpdate\Config\Guide\GuideResConfig.cs" />
     <Compile Include="Assets\HotUpdate\Engine\TMPTextPro.cs" />
     <Compile Include="Assets\HotUpdate\Config\Condition\ConditionConfig.cs" />
+    <Compile Include="Assets\HotUpdate\Game\Login\AccountSignView.cs" />
     <Compile Include="Assets\HotUpdate\Engine\IGrayMember.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\GridView\LoopGridViewItem.cs" />
+    <Compile Include="Assets\HotUpdate\Game\Login\LoginManager.cs" />
     <Compile Include="Assets\HotUpdate\TimeTool\TimeUtil.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameManager.cs" />
     <Compile Include="Assets\HotUpdate\Network\NetworkManager.cs" />
@@ -141,7 +144,6 @@
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\Common\ClickEventListener.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\Loading\LoadingView.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Condition\ConditionDefine.cs" />
-    <Compile Include="Assets\HotUpdate\Game\Login\LoginManger.cs" />
     <Compile Include="Assets\HotUpdate\tool\ScrollViewHelper\Common\CommonDefine.cs" />
     <Compile Include="Assets\HotUpdate\Engine\YRawImage.cs" />
     <Compile Include="Assets\HotUpdate\UIFrameWork\Loading\GameInitStep.cs" />
@@ -548,6 +550,14 @@
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.10.2\Lib\Editor\unityplastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Assets\Plugins\Protobuf\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Plugins\websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
@@ -568,20 +578,12 @@
       <HintPath>Library\PackageCache\com.code-philosophy.hybridclr@fcef6dfe8e\Plugins\LZ4.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Plugins\websocket-sharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Assets\Plugins\Protobuf\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>Assets\Plugins\Protobuf\Google.Protobuf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.TextureAssets">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

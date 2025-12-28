@@ -21,6 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
         LoadManager.Instance.Init();
         ConfigManager.Instance.Init();
         LanguageManager.Instance.Init();
+        LanguageManager.Instance.SetLanguage(Launcher.Instance.LangType);
         InputManager.Instance.Startup();
         SceneManager.Instance.Init();
         UIManager.Instance.Init();

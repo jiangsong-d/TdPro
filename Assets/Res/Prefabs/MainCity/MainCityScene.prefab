@@ -128,7 +128,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2263398133300257379}
   - component: {fileID: 1343997223789654923}
-  - component: {fileID: 171739598159881589}
   m_Layer: 0
   m_Name: '@_obj_vm_Camera'
   m_TagString: Untagged
@@ -191,127 +190,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 4797638797842942819}
---- !u!114 &171739598159881589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2842241089200544686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b6602a48789fd4eb8e7bfc6e63fb3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCamera: {fileID: 0}
-  controlledTransform: {fileID: 2263398133300257379}
-  moveSpeed: 1
-  invertDragDirection: 1
-  smoothMove: 1
-  smoothTime: 0.1
-  useBounds: 1
-  boundsMin: {x: -100, y: -100}
-  boundsMax: {x: 100, y: 100}
-  minZoom: 5
-  maxZoom: 30
-  zoomSpeed: 2
-  smoothZoom: 1
-  enableEdgeScroll: 1
-  edgeScrollThreshold: 20
-  edgeScrollSpeed: 10
---- !u!1 &5320267374213113430
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3704583507136653009}
-  - component: {fileID: 974716311740728482}
-  - component: {fileID: 5160546491040221117}
-  m_Layer: 0
-  m_Name: Terrain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &3704583507136653009
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5320267374213113430}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7905451116926269697}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!218 &974716311740728482
-Terrain:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5320267374213113430}
-  m_Enabled: 1
-  serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 900c44c852e846d45951158f6c23f4c9, type: 2}
-  m_TreeDistance: 2000
-  m_TreeBillboardDistance: 50
-  m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
-  m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
-  m_HeightmapMinimumLODSimplification: 0
-  m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
-  m_DrawHeightmap: 1
-  m_DrawInstanced: 0
-  m_DrawTreesAndFoliage: 1
-  m_StaticShadowCaster: 0
-  m_IgnoreQualitySettings: 0
-  m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
-  m_BakeLightProbesForTrees: 1
-  m_PreserveTreePrototypeLayers: 0
-  m_DeringLightProbesForTrees: 1
-  m_ReceiveGI: 1
-  m_ScaleInLightmap: 0.0512
-  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
-  m_GroupingID: 0
-  m_RenderingLayerMask: 1
-  m_AllowAutoConnect: 0
-  m_EnableHeightmapRayTracing: 1
-  m_EnableTreesAndDetailsRayTracing: 0
-  m_TreeMotionVectorModeOverride: 3
---- !u!154 &5160546491040221117
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5320267374213113430}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 900c44c852e846d45951158f6c23f4c9, type: 2}
-  m_EnableTreeColliders: 1
 --- !u!1 &8722627097230884249
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +313,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7905451116926269697}
   - component: {fileID: 860416176842034339}
-  - component: {fileID: 71198588695802956}
   m_Layer: 0
   m_Name: MainCityScene
   m_TagString: Untagged
@@ -457,7 +334,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4024018915537433582}
-  - {fileID: 3704583507136653009}
   - {fileID: 2263398133300257379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,21 +356,3 @@ MonoBehaviour:
   uiBtnList: []
   uiToggleList: []
   uiTmpList: []
---- !u!114 &71198588695802956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8931675870039265720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1fb242dadf04b48aca747ea020a016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previewAlpha: 0.6
-  hoverHeight: 0.2
-  validColor: {r: 0, g: 1, b: 0, a: 0.6}
-  invalidColor: {r: 1, g: 0, b: 0, a: 0.6}
-  cancelKey: 27
-  groundLayerMask: 1

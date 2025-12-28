@@ -17,13 +17,11 @@ message HeartbeatResponse {
   int32 ping = 3;             // 延迟(ms)
 }
 
-// 登录请求
+// 登录请求（连接游戏服时使用，token 从账号服登录获得）
 message LoginRequest {
-  string player_id = 1;
-  string player_name = 2;
-  string token = 3;
-  string device_id = 4;       // 设备ID
-  string platform = 5;        // 平台: iOS/Android/PC
+  string token = 1;           // 账号服登录返回的 token
+  string device_id = 2;       // 设备ID
+  string platform = 3;        // 平台: iOS/Android/PC
 }
 
 // 登录响应

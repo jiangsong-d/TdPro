@@ -316,7 +316,7 @@ public class WebSocketClient
         { 
             Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
         };
-        Send(Cmd.Heartbeat, heartbeat);
+        Send(Cmd.MsgHeartbeatReq, heartbeat);
     }
     #endregion
 
@@ -427,7 +427,7 @@ public class WebSocketClient
     private void HandleReceivedMessage(NetworkPacket packet)
     {
         // 心跳响应特殊处理
-        if (packet.Cmd == (int)Cmd.Heartbeat)
+        if (packet.Cmd == (int)Cmd.MsgHeartbeatRsp)
         {
             var res = HeartbeatResponse.Parser.ParseFrom(packet.Payload);
             _mainThreadContext.Post(_ =>

@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TMPTextPro
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0e17940af85524d46ac417bfbae8877a, type: 2}
-  m_sharedMaterial: {fileID: 3104183457041866329, guid: 0e17940af85524d46ac417bfbae8877a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d856342fb7b30341a6f51b34c69d856, type: 2}
+  m_sharedMaterial: {fileID: 7726730881648462334, guid: 2d856342fb7b30341a6f51b34c69d856, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

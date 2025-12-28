@@ -48,10 +48,10 @@ public class GameInitStep : GameSingleton<GameInitStep>, ILoadingStep
         Progress = 0.8f;
         yield return new WaitForSeconds(0.2f) ;
            ModelName = "正在连接服务器";
-         while(!LoginManager.Instance.isConnectionAccountServer)
-           {
-               yield return null ;
-           }
+        //  while(!LoginManager.Instance.isConnectionAccountServer)
+        //    {
+        //        yield return null ;
+        //    }
         yield return new WaitForSeconds(0.5f) ;
         Progress = 0.9f;
         ModelName = "连接服务器成功";
@@ -66,5 +66,7 @@ public class GameInitStep : GameSingleton<GameInitStep>, ILoadingStep
         Progress = 1f;
         isGameInit = true;
         UIManager.Instance.OpenWindow<LoginView>("LoginView");
+
+        
     }
 }

@@ -72,7 +72,6 @@
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Guide\GuideData.cs" />
     <Compile Include="Assets\HotUpdate\Network\HttpClient.cs" />
     <Compile Include="Assets\HotUpdate\tool\CameraController.cs" />
-    <Compile Include="Assets\HotUpdate\Common\Cmd.cs" />
     <Compile Include="Assets\HotUpdate\Game\GameFromWork\Guide\GuideDefine.cs" />
     <Compile Include="Assets\HotUpdate\Event\EventID.cs" />
     <Compile Include="Assets\HotUpdate\Config\Building\TbBuildingConfig.cs" />

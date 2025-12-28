@@ -9,22 +9,12 @@ public class LoginView : BaseUIView
     {
         base.OnCreate();
 
-        AccountServiceManager.Instance.OnLocalAccountCheck += OnLocalAccountCheck;
-        AccountServiceManager.Instance.CheckLocalAccount();
+        // AccountServiceManager.Instance.OnLocalAccountCheck += OnLocalAccountCheck;
+        // AccountServiceManager.Instance.CheckLocalAccount();
+        LoginManager.Instance.CheckAndAutoLogin();
     }
     public override void OnRefresh()
     {
-    }
-    private void OnLocalAccountCheck(bool hasAccount)
-    {
-        if (hasAccount)
-        {
-            AccountServiceManager.Instance.LoginWithLocalAccount();
-        }
-        else
-        {
-               UIManager.Instance.OpenWindow<AccountSignView>("AccountSignView");
-        }
     }
     public override void OnClickBtn(ButtonPro btn)
     {
@@ -32,7 +22,12 @@ public class LoginView : BaseUIView
         if (Btn.ContainsKey("btn_login"))
         {
              LogUtlis.Info("点击了登录按钮");
+            
+            LoginNet.Instance.SendLogin();
+
              LoadingManager.Instance.SwitchScene(LoadSceneType.Main);
+
+
              Close();
         }
         

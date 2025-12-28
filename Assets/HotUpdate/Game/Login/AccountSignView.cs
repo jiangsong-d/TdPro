@@ -16,8 +16,6 @@ public class AccountSignView : BaseUIView
         base.OnCreate();
     
     }
-    
-
     public override void OnRefresh()
     {
         username = Obj["obj_Account"].GetComponent<TMP_InputField>().text;
@@ -43,7 +41,7 @@ public class AccountSignView : BaseUIView
             AccountServiceManager.Instance.Register(username, password);
              Close();
         }
-        if (btn==Btn["btn_login"])
+        else if (btn==Btn["btn_login"])
         {
             // 登录按钮
             LogUtlis.Info($"[登录界面] 登录账号: {username}");

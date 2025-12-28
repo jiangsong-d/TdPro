@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Google.Protobuf;
+using TowerDefense.Proto;
 
 /// <summary>
 /// 服务器类型枚举

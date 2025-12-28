@@ -5,20 +5,12 @@ using UnityEngine;
 
 public class LoginManager : GameSingleton<LoginManager>
 {
-    public bool isConnectionAccountServer = false;
-    private bool isInitialized = false;  // 防止重复初始化
+    private bool isInitialized = false;
     
     // 本地存储的键名
     private const string LAST_SERVER_ID_KEY = "last_selected_server_id";
     private const string LAST_SERVER_NAME_KEY = "last_selected_server_name";
-    private const string LAST_SERVER_HOST_KEY = "last_selected_server_host";
-    private const string LAST_SERVER_PORT_KEY = "last_selected_server_port";
-    
-    // 事件：服务器列表加载完成
-    public event Action<List<GameServerInfoJson>> OnServerListLoaded;
-    // 事件：上次服务器检查完成（是否有保存的服务器）
-    public event Action<bool, GameServerInfoJson> OnLastServerCheck;
-    
+    private const string LAST_SERVER_URL_KEY = "last_selected_server_url";
     public override void Init()
     {
         if (isInitialized)
@@ -29,126 +21,89 @@ public class LoginManager : GameSingleton<LoginManager>
         
         base.Init();
         
-        // 先取消订阅，防止重复订阅
-        AccountServiceManager.Instance.OnConnectionTest -= OnConnectionTest;
-        AccountServiceManager.Instance.OnLoginResult -= OnLoginResult;
-        AccountServiceManager.Instance.OnServerListLoaded -= OnAccountServerListLoaded;
-        
-        // 重新订阅
-        AccountServiceManager.Instance.OnConnectionTest += OnConnectionTest;
-        AccountServiceManager.Instance.OnLoginResult += OnLoginResult;
-        AccountServiceManager.Instance.OnServerListLoaded += OnAccountServerListLoaded;
-        
-        AccountServiceManager.Instance.Init(Launcher.Instance.httpIp, autoTest: true);
+        // 初始化账号服务
+        AccountServiceManager.Instance.Init(Launcher.Instance.httpIp);
         isInitialized = true;
         LogUtlis.Info("[LoginManager] 初始化完成");
+        
+        // 检查本地账号并自动登录
+        // CheckAndAutoLogin();
     }
 
-    public void OnConnectionTest(bool success, string message)
-    {
-        if (success)
-        {
-           isConnectionAccountServer = true;
-           LogUtlis.Info("[LoginManager] 账号服务器连接成功");
-        }
-        else
-        {
-            isConnectionAccountServer = false;
-            LogUtlis.Error($"[LoginManager] 账号服务器连接失败: {message}");
-        }
-    }
-    
-    public void OnLoginResult(bool success, string message)
-    {
-        if (success)
-        {
-            LogUtlis.Info("[LoginManager] 登录成功，获取服务器列表");
-            // 登录成功后，获取服务器列表
-            AccountServiceManager.Instance.GetServerList();
-        }
-        else
-        {
-            LogUtlis.Error($"[LoginManager] 登录失败: {message}");
-        }
-    }
-
-    
     /// <summary>
-    /// 服务器列表加载回调
+    /// 检查本地账号并自动登录
     /// </summary>
-    private void OnAccountServerListLoaded(bool success, string serverListJson)
+    public void CheckAndAutoLogin()
     {
-        if (!success)
+        if (AccountServiceManager.Instance.HasLocalAccount)
         {
-            LogUtlis.Error($"[LoginManager] 服务器列表获取失败: {serverListJson}");
-            return;
-        }
-
-        try
-        {
-            var responseJson = JsonUtility.FromJson<LoginResponseJson>(serverListJson);
-            
-            if (responseJson?.code != 0 || responseJson.data == null)
+            LogUtlis.Info("[LoginManager] 发现本地账号，自动登录");
+            AccountServiceManager.Instance.LoginWithLocalAccount((success, msg, servers) =>
             {
-                LogUtlis.Error($"[LoginManager] 服务器返回错误: {responseJson?.message ?? "未知错误"}");
-                OpenServerListView(null);
-                return;
-            }
-
-            // TODO: 根据实际data结构解析服务器列表
-            LogUtlis.Info("[LoginManager] 服务器列表获取成功");
-            OpenServerListView(null);
-        }
-        catch (Exception ex)
-        {
-            LogUtlis.Error($"[LoginManager] 解析失败: {ex.Message}");
-            OpenServerListView(null);
-        }
-    }
-    
-    /// <summary>
-    /// 检查上次选择的服务器
-    /// </summary>
-    private void CheckLastSelectedServer(List<GameServerInfoJson> serverList)
-    {
-        if (HasLastSelectedServer())
-        {
-            var lastServer = LoadLastSelectedServer();
-            LogUtlis.Info($"[LoginManager] 发现上次选择的服务器: {lastServer.server_name} (ID:{lastServer.server_id})");
-            
-            // 验证服务器是否仍然在列表中且可用
-            var matchedServer = serverList.Find(s => s.server_id == lastServer.server_id);
-            
-            if (matchedServer != null && matchedServer.status == "online")
-            {
-                LogUtlis.Info($"[LoginManager] 上次服务器可用，打开服务器列表并自动选择");
-                OnLastServerCheck?.Invoke(true, matchedServer);
-                // 打开服务器列表，并传入上次选择的服务器
-                OpenServerListView(matchedServer);
-            }
-            else
-            {
-                LogUtlis.Warn($"[LoginManager] 上次服务器不可用或已下线，打开服务器列表");
-                OnLastServerCheck?.Invoke(false, null);
-                // 服务器不可用，清除记录，打开服务器列表
-                ClearLastSelectedServer();
-                OpenServerListView(null);
-            }
+                if (success)
+                {
+                    LogUtlis.Info($"[LoginManager] 自动登录成功，服务器数量: {servers?.Count ?? 0}");
+                    // 直接使用服务器返回的完整URL
+                    LoginGameServer(servers[0].url);
+                }
+                else
+                {
+                    LogUtlis.Error($"[LoginManager] 自动登录失败: {msg}");
+                    // 登录失败，可能需要重新注册或输入账号
+                }
+            });
         }
         else
         {
-            LogUtlis.Info("[LoginManager] 没有上次选择的服务器，打开服务器列表");
-            OnLastServerCheck?.Invoke(false, null);
-            // 没有保存的服务器，打开服务器列表
-            OpenServerListView(null);
+            LogUtlis.Info("[LoginManager] 没有本地账号，需要注册或登录");
         }
     }
+    /// <summary>
+    /// 连接游戏服务器
+    /// </summary>
+    /// <param name="url"></param>
+    public void LoginGameServer(string url)
+    {
+        NetworkManager.Instance.Init(ServerType.Game,url,AccountServiceManager.Instance.CurrentToken);
+    }   
+
+    /// <summary>
+    /// 注册账号（成功后自动登录并获取服务器列表）
+    /// </summary>
+    public void Register(string username, string password, Action<bool, string> callback = null)
+    {
+        AccountServiceManager.Instance.Register(username, password, (success, msg, servers) =>
+        {
+            if (success)
+            {
+                LogUtlis.Info($"[LoginManager] 注册成功，服务器数量: {servers?.Count ?? 0}");
+            }
+            callback?.Invoke(success, msg);
+        });
+    }
+
+    /// <summary>
+    /// 登录账号
+    /// </summary>
+    public void Login(string username, string password, Action<bool, string> callback = null)
+    {
+        AccountServiceManager.Instance.Login(username, password, (success, msg, servers) =>
+        {
+            if (success)
+            {
+                LogUtlis.Info($"[LoginManager] 登录成功，服务器数量: {servers?.Count ?? 0}");
+            }
+            callback?.Invoke(success, msg);
+        });
+    }
+
+
+    
+
 
     public override void OnDestroy()
     {
-        AccountServiceManager.Instance.OnConnectionTest -= OnConnectionTest;
-        AccountServiceManager.Instance.OnLoginResult -= OnLoginResult;
-        AccountServiceManager.Instance.OnServerListLoaded -= OnAccountServerListLoaded;
+        isInitialized = false;
     }
     
     /// <summary>
@@ -156,39 +111,24 @@ public class LoginManager : GameSingleton<LoginManager>
     /// </summary>
     private void OpenServerListView(GameServerInfoJson lastSelectedServer)
     {
-        // 这里根据你的项目实际情况实现界面打开逻辑
-        
-        // 方式1: 使用UIManager
-        // UIManager.Instance.ShowView<ServerListView>();
-        
-        // 方式2: 发送事件让其他脚本处理
-        // EventManager.Trigger("OpenServerList", lastSelectedServer);
-        
         LogUtlis.Info($"[LoginManager] 打开服务器列表界面，上次选择的服务器: {lastSelectedServer?.server_name ?? "无"}");
-        
         // TODO: 根据你的项目实际情况实现
     }
     
     #region 上次选择服务器的本地存储
     
     /// <summary>
-    /// 保存上次选择的服务器
-    /// </summary>
-    /// <summary>
-    /// 清理资源，取消事件订阅
+    /// 清理资源
     /// </summary>
     public void Cleanup()
     {
-        if (AccountServiceManager.Instance != null)
-        {
-            AccountServiceManager.Instance.OnConnectionTest -= OnConnectionTest;
-            AccountServiceManager.Instance.OnLoginResult -= OnLoginResult;
-            AccountServiceManager.Instance.OnServerListLoaded -= OnAccountServerListLoaded;
-        }
         isInitialized = false;
         LogUtlis.Info("[LoginManager] 清理完成");
     }
     
+    /// <summary>
+    /// 保存上次选择的服务器
+    /// </summary>
     public void SaveLastSelectedServer(GameServerInfoJson server)
     {
         if (server == null)
@@ -199,8 +139,7 @@ public class LoginManager : GameSingleton<LoginManager>
         
         PlayerPrefs.SetInt(LAST_SERVER_ID_KEY, server.server_id);
         PlayerPrefs.SetString(LAST_SERVER_NAME_KEY, server.server_name);
-        PlayerPrefs.SetString(LAST_SERVER_HOST_KEY, server.host);
-        PlayerPrefs.SetInt(LAST_SERVER_PORT_KEY, server.port);
+        PlayerPrefs.SetString(LAST_SERVER_URL_KEY, server.url);
         PlayerPrefs.Save();
         
         LogUtlis.Info($"[LoginManager] 保存上次选择的服务器: {server.server_name} (ID:{server.server_id})");
@@ -220,8 +159,7 @@ public class LoginManager : GameSingleton<LoginManager>
         {
             server_id = PlayerPrefs.GetInt(LAST_SERVER_ID_KEY, 0),
             server_name = PlayerPrefs.GetString(LAST_SERVER_NAME_KEY, ""),
-            host = PlayerPrefs.GetString(LAST_SERVER_HOST_KEY, ""),
-            port = PlayerPrefs.GetInt(LAST_SERVER_PORT_KEY, 0)
+            url = PlayerPrefs.GetString(LAST_SERVER_URL_KEY, "")
         };
         
         return server;
@@ -243,8 +181,7 @@ public class LoginManager : GameSingleton<LoginManager>
     {
         PlayerPrefs.DeleteKey(LAST_SERVER_ID_KEY);
         PlayerPrefs.DeleteKey(LAST_SERVER_NAME_KEY);
-        PlayerPrefs.DeleteKey(LAST_SERVER_HOST_KEY);
-        PlayerPrefs.DeleteKey(LAST_SERVER_PORT_KEY);
+        PlayerPrefs.DeleteKey(LAST_SERVER_URL_KEY);
         PlayerPrefs.Save();
         
         LogUtlis.Info("[LoginManager] 清除上次选择的服务器");

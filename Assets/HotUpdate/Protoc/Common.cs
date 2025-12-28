@@ -28,33 +28,41 @@ namespace TowerDefense.Proto {
             "KAISCQoBehgDIAEoAiJiCg1OZXR3b3JrUGFja2V0EgsKA2NtZBgBIAEoBRIM",
             "CgRjb2RlGAIgASgFEg8KB3BheWxvYWQYAyABKAwSEQoJdGltZXN0YW1wGAQg",
             "ASgDEhIKCm1lc3NhZ2VfaWQYBSABKAkiPgoNRXJyb3JSZXNwb25zZRIMCgRj",
-            "b2RlGAEgASgFEg8KB21lc3NhZ2UYAiABKAkSDgoGZGV0YWlsGAMgASgJKqED",
-            "CgtNZXNzYWdlVHlwZRIMCghNU0dfTk9ORRAAEhIKDU1TR19IRUFSVEJFQVQQ",
-            "6AcSDgoJTVNHX0xPR0lOEOkHEg8KCk1TR19MT0dPVVQQ6gcSFAoPTVNHX0NS",
-            "RUFURV9ST09NENEPEhIKDU1TR19KT0lOX1JPT00Q0g8SEwoOTVNHX0xFQVZF",
-            "X1JPT00Q0w8SEgoNTVNHX1JPT01fSU5GTxDUDxITCg5NU0dfU1RBUlRfR0FN",
-            "RRDVDxIUCg9NU0dfUExBQ0VfVE9XRVIQuRcSFgoRTVNHX1VQR1JBREVfVE9X",
-            "RVIQuhcSEwoOTVNHX1NFTExfVE9XRVIQuxcSEwoOTVNHX1dBVkVfU1RBUlQQ",
-            "vBcSFgoRTVNHX1dBVkVfQ09NUExFVEUQvRcSEgoNTVNHX0dBTUVfT1ZFUhC+",
-            "FxITCg5NU0dfU1lOQ19TVEFURRChHxITCg5NU0dfU1lOQ19FTkVNWRCiHxIT",
-            "Cg5NU0dfU1lOQ19UT1dFUhCjHxIUCg9NU0dfU1lOQ19EQU1BR0UQpB8SDgoJ",
-            "TVNHX0VSUk9SEI9OKpYECglFcnJvckNvZGUSDgoKRVJST1JfTk9ORRAAEhIK",
-            "DUVSUk9SX1VOS05PV04Q6AcSGAoTRVJST1JfSU5WQUxJRF9QQVJBTRDpBxIc",
-            "ChdFUlJPUl9QRVJNSVNTSU9OX0RFTklFRBDqBxIUCg9FUlJPUl9OT1RfRk9V",
-            "TkQQ6wcSGQoURVJST1JfQUxSRUFEWV9FWElTVFMQ7AcSEgoNRVJST1JfVElN",
-            "RU9VVBDtBxIUCg9FUlJPUl9OT1RfTE9HSU4Q0A8SFwoSRVJST1JfTE9HSU5f",
-            "RkFJTEVEENEPEhgKE0VSUk9SX1RPS0VOX0lOVkFMSUQQ0g8SGAoTRVJST1Jf",
-            "QUxSRUFEWV9MT0dJThDTDxIUCg9FUlJPUl9ST09NX0ZVTEwQuBcSGQoURVJS",
-            "T1JfUk9PTV9OT1RfRk9VTkQQuRcSFgoRRVJST1JfTk9UX0lOX1JPT00QuhcS",
-            "EwoORVJST1JfTk9UX0hPU1QQuxcSHwoaRVJST1JfUk9PTV9BTFJFQURZX1NU",
-            "QVJURUQQvBcSGgoVRVJST1JfTk9UX0VOT1VHSF9HT0xEEKAfEhsKFkVSUk9S",
-            "X0lOVkFMSURfUE9TSVRJT04QoR8SGgoVRVJST1JfVE9XRVJfTk9UX0ZPVU5E",
-            "EKIfEhsKFkVSUk9SX0dBTUVfTk9UX1NUQVJURUQQox8SFAoPRVJST1JfR0FN",
-            "RV9PVkVSEKQfQilaEnRvd2VyZGVmZW5zZS9wcm90b6oCElRvd2VyRGVmZW5z",
-            "ZS5Qcm90b2IGcHJvdG8z"));
+            "b2RlGAEgASgFEg8KB21lc3NhZ2UYAiABKAkSDgoGZGV0YWlsGAMgASgJKoYG",
+            "CgNDbWQSDAoITVNHX05PTkUQABIWChFNU0dfSEVBUlRCRUFUX1JFURDoBxIW",
+            "ChFNU0dfSEVBUlRCRUFUX1JTUBDpBxISCg1NU0dfTE9HSU5fUkVREOoHEhIK",
+            "DU1TR19MT0dJTl9SU1AQ6wcSEwoOTVNHX0xPR09VVF9SRVEQ7AcSEwoOTVNH",
+            "X0xPR09VVF9SU1AQ7QcSGAoTTVNHX0NSRUFURV9ST09NX1JFURDQDxIYChNN",
+            "U0dfQ1JFQVRFX1JPT01fUlNQENEPEhYKEU1TR19KT0lOX1JPT01fUkVRENIP",
+            "EhYKEU1TR19KT0lOX1JPT01fUlNQENMPEhcKEk1TR19MRUFWRV9ST09NX1JF",
+            "URDUDxIXChJNU0dfTEVBVkVfUk9PTV9SU1AQ1Q8SFgoRTVNHX1JPT01fSU5G",
+            "T19SRVEQ1g8SFgoRTVNHX1JPT01fSU5GT19SU1AQ1w8SFwoSTVNHX1NUQVJU",
+            "X0dBTUVfUkVRENgPEhcKEk1TR19TVEFSVF9HQU1FX1JTUBDZDxIYChNNU0df",
+            "UExBQ0VfVE9XRVJfUkVRELgXEhgKE01TR19QTEFDRV9UT1dFUl9SU1AQuRcS",
+            "GgoVTVNHX1VQR1JBREVfVE9XRVJfUkVRELoXEhoKFU1TR19VUEdSQURFX1RP",
+            "V0VSX1JTUBC7FxIXChJNU0dfU0VMTF9UT1dFUl9SRVEQvBcSFwoSTVNHX1NF",
+            "TExfVE9XRVJfUlNQEL0XEhcKEk1TR19XQVZFX1NUQVJUX1JFURC+FxIXChJN",
+            "U0dfV0FWRV9TVEFSVF9SU1AQvxcSGgoVTVNHX1dBVkVfQ09NUExFVEVfTlRG",
+            "EMAXEhYKEU1TR19HQU1FX09WRVJfTlRGEMEXEhcKEk1TR19TWU5DX1NUQVRF",
+            "X05URhCgHxIXChJNU0dfU1lOQ19FTkVNWV9OVEYQoR8SFwoSTVNHX1NZTkNf",
+            "VE9XRVJfTlRGEKIfEhgKE01TR19TWU5DX0RBTUFHRV9OVEYQox8SDgoJTVNH",
+            "X0VSUk9SEI9OKpYECglFcnJvckNvZGUSDgoKRVJST1JfTk9ORRAAEhIKDUVS",
+            "Uk9SX1VOS05PV04Q6AcSGAoTRVJST1JfSU5WQUxJRF9QQVJBTRDpBxIcChdF",
+            "UlJPUl9QRVJNSVNTSU9OX0RFTklFRBDqBxIUCg9FUlJPUl9OT1RfRk9VTkQQ",
+            "6wcSGQoURVJST1JfQUxSRUFEWV9FWElTVFMQ7AcSEgoNRVJST1JfVElNRU9V",
+            "VBDtBxIUCg9FUlJPUl9OT1RfTE9HSU4Q0A8SFwoSRVJST1JfTE9HSU5fRkFJ",
+            "TEVEENEPEhgKE0VSUk9SX1RPS0VOX0lOVkFMSUQQ0g8SGAoTRVJST1JfQUxS",
+            "RUFEWV9MT0dJThDTDxIUCg9FUlJPUl9ST09NX0ZVTEwQuBcSGQoURVJST1Jf",
+            "Uk9PTV9OT1RfRk9VTkQQuRcSFgoRRVJST1JfTk9UX0lOX1JPT00QuhcSEwoO",
+            "RVJST1JfTk9UX0hPU1QQuxcSHwoaRVJST1JfUk9PTV9BTFJFQURZX1NUQVJU",
+            "RUQQvBcSGgoVRVJST1JfTk9UX0VOT1VHSF9HT0xEEKAfEhsKFkVSUk9SX0lO",
+            "VkFMSURfUE9TSVRJT04QoR8SGgoVRVJST1JfVE9XRVJfTk9UX0ZPVU5EEKIf",
+            "EhsKFkVSUk9SX0dBTUVfTk9UX1NUQVJURUQQox8SFAoPRVJST1JfR0FNRV9P",
+            "VkVSEKQfQilaEnRvd2VyZGVmZW5zZS9wcm90b6oCElRvd2VyRGVmZW5zZS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::TowerDefense.Proto.MessageType), typeof(global::TowerDefense.Proto.ErrorCode), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::TowerDefense.Proto.Cmd), typeof(global::TowerDefense.Proto.ErrorCode), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.Vector3), global::TowerDefense.Proto.Vector3.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.NetworkPacket), global::TowerDefense.Proto.NetworkPacket.Parser, new[]{ "Cmd", "Code", "Payload", "Timestamp", "MessageId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.ErrorResponse), global::TowerDefense.Proto.ErrorResponse.Parser, new[]{ "Code", "Message", "Detail" }, null, null, null, null)
@@ -64,38 +72,56 @@ namespace TowerDefense.Proto {
 
   }
   #region Enums
-  public enum MessageType {
+  public enum Cmd {
     [pbr::OriginalName("MSG_NONE")] MsgNone = 0,
     /// <summary>
     /// 连接相关 1000-1099
     /// </summary>
-    [pbr::OriginalName("MSG_HEARTBEAT")] MsgHeartbeat = 1000,
-    [pbr::OriginalName("MSG_LOGIN")] MsgLogin = 1001,
-    [pbr::OriginalName("MSG_LOGOUT")] MsgLogout = 1002,
+    [pbr::OriginalName("MSG_HEARTBEAT_REQ")] MsgHeartbeatReq = 1000,
+    [pbr::OriginalName("MSG_HEARTBEAT_RSP")] MsgHeartbeatRsp = 1001,
+    [pbr::OriginalName("MSG_LOGIN_REQ")] MsgLoginReq = 1002,
+    [pbr::OriginalName("MSG_LOGIN_RSP")] MsgLoginRsp = 1003,
+    [pbr::OriginalName("MSG_LOGOUT_REQ")] MsgLogoutReq = 1004,
+    [pbr::OriginalName("MSG_LOGOUT_RSP")] MsgLogoutRsp = 1005,
     /// <summary>
     /// 房间相关 2000-2099
     /// </summary>
-    [pbr::OriginalName("MSG_CREATE_ROOM")] MsgCreateRoom = 2001,
-    [pbr::OriginalName("MSG_JOIN_ROOM")] MsgJoinRoom = 2002,
-    [pbr::OriginalName("MSG_LEAVE_ROOM")] MsgLeaveRoom = 2003,
-    [pbr::OriginalName("MSG_ROOM_INFO")] MsgRoomInfo = 2004,
-    [pbr::OriginalName("MSG_START_GAME")] MsgStartGame = 2005,
+    [pbr::OriginalName("MSG_CREATE_ROOM_REQ")] MsgCreateRoomReq = 2000,
+    [pbr::OriginalName("MSG_CREATE_ROOM_RSP")] MsgCreateRoomRsp = 2001,
+    [pbr::OriginalName("MSG_JOIN_ROOM_REQ")] MsgJoinRoomReq = 2002,
+    [pbr::OriginalName("MSG_JOIN_ROOM_RSP")] MsgJoinRoomRsp = 2003,
+    [pbr::OriginalName("MSG_LEAVE_ROOM_REQ")] MsgLeaveRoomReq = 2004,
+    [pbr::OriginalName("MSG_LEAVE_ROOM_RSP")] MsgLeaveRoomRsp = 2005,
+    [pbr::OriginalName("MSG_ROOM_INFO_REQ")] MsgRoomInfoReq = 2006,
+    [pbr::OriginalName("MSG_ROOM_INFO_RSP")] MsgRoomInfoRsp = 2007,
+    [pbr::OriginalName("MSG_START_GAME_REQ")] MsgStartGameReq = 2008,
+    [pbr::OriginalName("MSG_START_GAME_RSP")] MsgStartGameRsp = 2009,
     /// <summary>
     /// 战斗相关 3000-3099
     /// </summary>
-    [pbr::OriginalName("MSG_PLACE_TOWER")] MsgPlaceTower = 3001,
-    [pbr::OriginalName("MSG_UPGRADE_TOWER")] MsgUpgradeTower = 3002,
-    [pbr::OriginalName("MSG_SELL_TOWER")] MsgSellTower = 3003,
-    [pbr::OriginalName("MSG_WAVE_START")] MsgWaveStart = 3004,
-    [pbr::OriginalName("MSG_WAVE_COMPLETE")] MsgWaveComplete = 3005,
-    [pbr::OriginalName("MSG_GAME_OVER")] MsgGameOver = 3006,
+    [pbr::OriginalName("MSG_PLACE_TOWER_REQ")] MsgPlaceTowerReq = 3000,
+    [pbr::OriginalName("MSG_PLACE_TOWER_RSP")] MsgPlaceTowerRsp = 3001,
+    [pbr::OriginalName("MSG_UPGRADE_TOWER_REQ")] MsgUpgradeTowerReq = 3002,
+    [pbr::OriginalName("MSG_UPGRADE_TOWER_RSP")] MsgUpgradeTowerRsp = 3003,
+    [pbr::OriginalName("MSG_SELL_TOWER_REQ")] MsgSellTowerReq = 3004,
+    [pbr::OriginalName("MSG_SELL_TOWER_RSP")] MsgSellTowerRsp = 3005,
+    [pbr::OriginalName("MSG_WAVE_START_REQ")] MsgWaveStartReq = 3006,
+    [pbr::OriginalName("MSG_WAVE_START_RSP")] MsgWaveStartRsp = 3007,
     /// <summary>
-    /// 同步相关 4000-4099
+    /// 服务器通知，无需请求
     /// </summary>
-    [pbr::OriginalName("MSG_SYNC_STATE")] MsgSyncState = 4001,
-    [pbr::OriginalName("MSG_SYNC_ENEMY")] MsgSyncEnemy = 4002,
-    [pbr::OriginalName("MSG_SYNC_TOWER")] MsgSyncTower = 4003,
-    [pbr::OriginalName("MSG_SYNC_DAMAGE")] MsgSyncDamage = 4004,
+    [pbr::OriginalName("MSG_WAVE_COMPLETE_NTF")] MsgWaveCompleteNtf = 3008,
+    /// <summary>
+    /// 服务器通知，无需请求
+    /// </summary>
+    [pbr::OriginalName("MSG_GAME_OVER_NTF")] MsgGameOverNtf = 3009,
+    /// <summary>
+    /// 同步相关 4000-4099 (服务器主动推送，使用 NTF 后缀)
+    /// </summary>
+    [pbr::OriginalName("MSG_SYNC_STATE_NTF")] MsgSyncStateNtf = 4000,
+    [pbr::OriginalName("MSG_SYNC_ENEMY_NTF")] MsgSyncEnemyNtf = 4001,
+    [pbr::OriginalName("MSG_SYNC_TOWER_NTF")] MsgSyncTowerNtf = 4002,
+    [pbr::OriginalName("MSG_SYNC_DAMAGE_NTF")] MsgSyncDamageNtf = 4003,
     /// <summary>
     /// 错误消息 9999
     /// </summary>

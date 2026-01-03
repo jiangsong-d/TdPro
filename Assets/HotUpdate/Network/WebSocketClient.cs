@@ -332,6 +332,12 @@ public class WebSocketClient
             _lastMessageReceiveTime = DateTime.Now;
             LogUtlis.Info("连接成功建立，握手完成");
         }
+        
+        // 事件分发必须在主线程执行
+        _mainThreadContext?.Post(_ =>
+        {
+            EngineEventManager.Instance.DispatchEvent(new EngineEvent(EventID.WebSocketConnected));
+        }, null);
     }
 
     /// <summary>

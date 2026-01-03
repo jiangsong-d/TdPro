@@ -1,0 +1,62 @@
+syntax = "proto3";
+option csharp_namespace = "TowerDefense.Proto";
+option go_package = "towerdefense/proto";
+
+// ========== 玩家相关消息 ==========
+
+// 玩家完整数据
+message PlayerData {
+  string player_id = 1;        // 玩家ID
+  string player_name = 2;      // 玩家名称
+  int32 icon_id = 3;           // 头像ID
+  int32 frame_id = 4;          // 头像框ID
+  int32 level = 5;             // 等级
+  int32 exp = 6;               // 经验值
+  int32 gold = 7;              // 金币
+  int32 diamond = 8;           // 钻石
+  int32 vip_level = 9;         // VIP等级
+  int32 total_battles = 10;    // 总战斗次数
+  int32 win_count = 11;        // 胜利次数
+  int32 lose_count = 12;       // 失败次数
+  int32 total_kills = 13;      // 总击杀数
+  int32 max_wave = 14;         // 最高波数
+  int64 create_time = 15;      // 创建时间（时间戳）
+  int64 last_login_time = 16;  // 最后登录时间（时间戳）
+  bool is_new_player = 17;     // 是否新玩家（刚创建角色）
+}
+
+// 获取玩家数据请求
+message GetPlayerDataRequest {
+  // 空消息，服务器根据登录session获取玩家ID
+}
+
+// 获取玩家数据响应
+message GetPlayerDataResponse {
+  bool success = 1;
+  string message = 2;
+  PlayerData player_data = 3;  // 玩家数据
+}
+
+// 修改玩家名请求
+message UpdatePlayerNameRequest {
+  string new_name = 1;         // 新名称
+}
+
+// 修改玩家名响应
+message UpdatePlayerNameResponse {
+  bool success = 1;
+  string message = 2;
+  string new_name = 3;         // 修改后的名称
+}
+
+// 修改头像请求
+message UpdatePlayerIconRequest {
+  int32 icon_id = 1;           // 新头像ID
+}
+
+// 修改头像响应
+message UpdatePlayerIconResponse {
+  bool success = 1;
+  string message = 2;
+  int32 icon_id = 3;           // 修改后的头像ID
+}

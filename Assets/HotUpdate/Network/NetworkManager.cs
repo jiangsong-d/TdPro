@@ -77,22 +77,6 @@ public class NetworkManager : GameSingleton<NetworkManager>
     }
 
     /// <summary>
-    /// 初始化默认游戏服务器（向后兼容）
-    /// </summary>
-    public void Init(string serverUrl, string token)
-    {
-        Init(_defaultServer, serverUrl, token);
-    }
-
-    /// <summary>
-    /// 设置默认服务器
-    /// </summary>
-    public void SetDefaultServer(ServerType serverType)
-    {
-        _defaultServer = serverType;
-    }
-
-    /// <summary>
     /// 获取服务器连接
     /// </summary>
     private ServerConnection GetConnection(ServerType serverType)
@@ -113,15 +97,6 @@ public class NetworkManager : GameSingleton<NetworkManager>
         var connection = GetConnection(serverType);
         connection.Client?.SetToken(token);
     }
-
-    /// <summary>
-    /// 设置默认服务器令牌（向后兼容）
-    /// </summary>
-    public void SetClientToken(string token)
-    {
-        SetClientToken(_defaultServer, token);
-    }
-
     /// <summary>
     /// 注册消息处理器
     /// </summary>

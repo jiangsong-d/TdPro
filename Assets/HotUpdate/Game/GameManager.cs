@@ -21,7 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
         LoadManager.Instance.Init();
         ConfigManager.Instance.Init();
         LanguageManager.Instance.Init();
-        LanguageManager.Instance.SetLanguage(Launcher.Instance.LangType);
+        LanguageManager.Instance.InitConfig();
         InputManager.Instance.Startup();
         SceneManager.Instance.Init();
         UIManager.Instance.Init();
@@ -73,6 +73,8 @@ public class GameManager : MonoSingleton<GameManager>
     public void Update()
     {
         SceneManager.Instance.Update(Time.deltaTime);
+        // 处理网络消息队列
+        NetworkManager.Instance.NetHandleRecovers();
     }
 
     public void LateUpdate()

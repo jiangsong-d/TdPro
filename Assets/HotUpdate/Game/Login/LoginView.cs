@@ -23,10 +23,9 @@ public class LoginView : BaseUIView
         {
              LogUtlis.Info("点击了登录按钮");
             
-            LoginNet.Instance.SendLogin();
+            // LoginNet.Instance.SendLogin();
 
-             LoadingManager.Instance.SwitchScene(LoadSceneType.Main);
-
+            LoginManager.Instance.LoginGameServer();
 
              Close();
         }

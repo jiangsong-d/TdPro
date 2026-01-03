@@ -27,25 +27,24 @@ namespace TowerDefense.Proto {
             "ChBjb25uZWN0aW9uLnByb3RvIj0KEEhlYXJ0YmVhdFJlcXVlc3QSEQoJdGlt",
             "ZXN0YW1wGAEgASgDEhYKDmNsaWVudF92ZXJzaW9uGAIgASgJIkkKEUhlYXJ0",
             "YmVhdFJlc3BvbnNlEhEKCXRpbWVzdGFtcBgBIAEoAxITCgtzZXJ2ZXJfdGlt",
-            "ZRgCIAEoAxIMCgRwaW5nGAMgASgFImoKDExvZ2luUmVxdWVzdBIRCglwbGF5",
-            "ZXJfaWQYASABKAkSEwoLcGxheWVyX25hbWUYAiABKAkSDQoFdG9rZW4YAyAB",
-            "KAkSEQoJZGV2aWNlX2lkGAQgASgJEhAKCHBsYXRmb3JtGAUgASgJIpMBCg1M",
-            "b2dpblJlc3BvbnNlEg8KB3N1Y2Nlc3MYASABKAgSEQoJcGxheWVyX2lkGAIg",
-            "ASgJEhMKC3BsYXllcl9uYW1lGAMgASgJEhIKCnNlc3Npb25faWQYBCABKAkS",
-            "DwoHbWVzc2FnZRgFIAEoCRIkCgtwbGF5ZXJfaW5mbxgGIAEoCzIPLlBsYXll",
-            "ckJhc2VJbmZvIowBCg5QbGF5ZXJCYXNlSW5mbxIRCglwbGF5ZXJfaWQYASAB",
-            "KAkSEwoLcGxheWVyX25hbWUYAiABKAkSDQoFbGV2ZWwYAyABKAUSCwoDZXhw",
-            "GAQgASgFEgwKBGNvaW4YBSABKAUSDwoHZGlhbW9uZBgGIAEoBRIXCg9sYXN0",
-            "X2xvZ2luX3RpbWUYByABKAMiHwoNTG9nb3V0UmVxdWVzdBIOCgZyZWFzb24Y",
-            "ASABKAkiMgoOTG9nb3V0UmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCBIPCgdt",
-            "ZXNzYWdlGAIgASgJQilaEnRvd2VyZGVmZW5zZS9wcm90b6oCElRvd2VyRGVm",
-            "ZW5zZS5Qcm90b2IGcHJvdG8z"));
+            "ZRgCIAEoAxIMCgRwaW5nGAMgASgFIkIKDExvZ2luUmVxdWVzdBINCgV0b2tl",
+            "bhgBIAEoCRIRCglkZXZpY2VfaWQYAiABKAkSEAoIcGxhdGZvcm0YAyABKAki",
+            "kwEKDUxvZ2luUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCBIRCglwbGF5ZXJf",
+            "aWQYAiABKAkSEwoLcGxheWVyX25hbWUYAyABKAkSEgoKc2Vzc2lvbl9pZBgE",
+            "IAEoCRIPCgdtZXNzYWdlGAUgASgJEiQKC3BsYXllcl9pbmZvGAYgASgLMg8u",
+            "UGxheWVyQmFzZUluZm8ijAEKDlBsYXllckJhc2VJbmZvEhEKCXBsYXllcl9p",
+            "ZBgBIAEoCRITCgtwbGF5ZXJfbmFtZRgCIAEoCRINCgVsZXZlbBgDIAEoBRIL",
+            "CgNleHAYBCABKAUSDAoEY29pbhgFIAEoBRIPCgdkaWFtb25kGAYgASgFEhcK",
+            "D2xhc3RfbG9naW5fdGltZRgHIAEoAyIfCg1Mb2dvdXRSZXF1ZXN0Eg4KBnJl",
+            "YXNvbhgBIAEoCSIyCg5Mb2dvdXRSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgI",
+            "Eg8KB21lc3NhZ2UYAiABKAlCKVoSdG93ZXJkZWZlbnNlL3Byb3RvqgISVG93",
+            "ZXJEZWZlbnNlLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.HeartbeatRequest), global::TowerDefense.Proto.HeartbeatRequest.Parser, new[]{ "Timestamp", "ClientVersion" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.HeartbeatResponse), global::TowerDefense.Proto.HeartbeatResponse.Parser, new[]{ "Timestamp", "ServerTime", "Ping" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.LoginRequest), global::TowerDefense.Proto.LoginRequest.Parser, new[]{ "PlayerId", "PlayerName", "Token", "DeviceId", "Platform" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.LoginRequest), global::TowerDefense.Proto.LoginRequest.Parser, new[]{ "Token", "DeviceId", "Platform" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.LoginResponse), global::TowerDefense.Proto.LoginResponse.Parser, new[]{ "Success", "PlayerId", "PlayerName", "SessionId", "Message", "PlayerInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.PlayerBaseInfo), global::TowerDefense.Proto.PlayerBaseInfo.Parser, new[]{ "PlayerId", "PlayerName", "Level", "Exp", "Coin", "Diamond", "LastLoginTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TowerDefense.Proto.LogoutRequest), global::TowerDefense.Proto.LogoutRequest.Parser, new[]{ "Reason" }, null, null, null, null),
@@ -579,7 +578,7 @@ namespace TowerDefense.Proto {
   }
 
   /// <summary>
-  /// 登录请求
+  /// 登录请求（连接游戏服时使用，token 从账号服登录获得）
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class LoginRequest : pb::IMessage<LoginRequest>
@@ -616,8 +615,6 @@ namespace TowerDefense.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LoginRequest(LoginRequest other) : this() {
-      playerId_ = other.playerId_;
-      playerName_ = other.playerName_;
       token_ = other.token_;
       deviceId_ = other.deviceId_;
       platform_ = other.platform_;
@@ -630,33 +627,12 @@ namespace TowerDefense.Proto {
       return new LoginRequest(this);
     }
 
-    /// <summary>Field number for the "player_id" field.</summary>
-    public const int PlayerIdFieldNumber = 1;
-    private string playerId_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PlayerId {
-      get { return playerId_; }
-      set {
-        playerId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "player_name" field.</summary>
-    public const int PlayerNameFieldNumber = 2;
-    private string playerName_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PlayerName {
-      get { return playerName_; }
-      set {
-        playerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "token" field.</summary>
-    public const int TokenFieldNumber = 3;
+    public const int TokenFieldNumber = 1;
     private string token_ = "";
+    /// <summary>
+    /// 账号服登录返回的 token
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Token {
@@ -667,7 +643,7 @@ namespace TowerDefense.Proto {
     }
 
     /// <summary>Field number for the "device_id" field.</summary>
-    public const int DeviceIdFieldNumber = 4;
+    public const int DeviceIdFieldNumber = 2;
     private string deviceId_ = "";
     /// <summary>
     /// 设备ID
@@ -682,7 +658,7 @@ namespace TowerDefense.Proto {
     }
 
     /// <summary>Field number for the "platform" field.</summary>
-    public const int PlatformFieldNumber = 5;
+    public const int PlatformFieldNumber = 3;
     private string platform_ = "";
     /// <summary>
     /// 平台: iOS/Android/PC
@@ -711,8 +687,6 @@ namespace TowerDefense.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PlayerId != other.PlayerId) return false;
-      if (PlayerName != other.PlayerName) return false;
       if (Token != other.Token) return false;
       if (DeviceId != other.DeviceId) return false;
       if (Platform != other.Platform) return false;
@@ -723,8 +697,6 @@ namespace TowerDefense.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PlayerId.Length != 0) hash ^= PlayerId.GetHashCode();
-      if (PlayerName.Length != 0) hash ^= PlayerName.GetHashCode();
       if (Token.Length != 0) hash ^= Token.GetHashCode();
       if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
       if (Platform.Length != 0) hash ^= Platform.GetHashCode();
@@ -746,24 +718,16 @@ namespace TowerDefense.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PlayerId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(PlayerId);
-      }
-      if (PlayerName.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(PlayerName);
-      }
       if (Token.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(10);
         output.WriteString(Token);
       }
       if (DeviceId.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(18);
         output.WriteString(DeviceId);
       }
       if (Platform.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(26);
         output.WriteString(Platform);
       }
       if (_unknownFields != null) {
@@ -776,24 +740,16 @@ namespace TowerDefense.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PlayerId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(PlayerId);
-      }
-      if (PlayerName.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(PlayerName);
-      }
       if (Token.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(10);
         output.WriteString(Token);
       }
       if (DeviceId.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(18);
         output.WriteString(DeviceId);
       }
       if (Platform.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(26);
         output.WriteString(Platform);
       }
       if (_unknownFields != null) {
@@ -806,12 +762,6 @@ namespace TowerDefense.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PlayerId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerId);
-      }
-      if (PlayerName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerName);
-      }
       if (Token.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
       }
@@ -832,12 +782,6 @@ namespace TowerDefense.Proto {
     public void MergeFrom(LoginRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.PlayerId.Length != 0) {
-        PlayerId = other.PlayerId;
-      }
-      if (other.PlayerName.Length != 0) {
-        PlayerName = other.PlayerName;
       }
       if (other.Token.Length != 0) {
         Token = other.Token;
@@ -868,22 +812,14 @@ namespace TowerDefense.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            PlayerId = input.ReadString();
-            break;
-          }
-          case 18: {
-            PlayerName = input.ReadString();
-            break;
-          }
-          case 26: {
             Token = input.ReadString();
             break;
           }
-          case 34: {
+          case 18: {
             DeviceId = input.ReadString();
             break;
           }
-          case 42: {
+          case 26: {
             Platform = input.ReadString();
             break;
           }
@@ -907,22 +843,14 @@ namespace TowerDefense.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            PlayerId = input.ReadString();
-            break;
-          }
-          case 18: {
-            PlayerName = input.ReadString();
-            break;
-          }
-          case 26: {
             Token = input.ReadString();
             break;
           }
-          case 34: {
+          case 18: {
             DeviceId = input.ReadString();
             break;
           }
-          case 42: {
+          case 26: {
             Platform = input.ReadString();
             break;
           }

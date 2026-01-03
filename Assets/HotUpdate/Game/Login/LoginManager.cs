@@ -11,6 +11,8 @@ public class LoginManager : GameSingleton<LoginManager>
     private const string LAST_SERVER_ID_KEY = "last_selected_server_id";
     private const string LAST_SERVER_NAME_KEY = "last_selected_server_name";
     private const string LAST_SERVER_URL_KEY = "last_selected_server_url";
+
+    public GameServerInfoJson CurrentSelectedServer { get; private set; }
     public override void Init()
     {
         if (isInitialized)
@@ -25,11 +27,19 @@ public class LoginManager : GameSingleton<LoginManager>
         AccountServiceManager.Instance.Init(Launcher.Instance.httpIp);
         isInitialized = true;
         LogUtlis.Info("[LoginManager] 初始化完成");
+
+        AddEvent(EventID.WebSocketConnected, OnWebSocketConnected);
         
-        // 检查本地账号并自动登录
+        // 检查本地账   号并自动登录
         // CheckAndAutoLogin();
     }
 
+    public  void OnWebSocketConnected(EngineEvent e)
+    {
+        LogUtlis.Info("[LoginManager] 已连接到游戏服务器，发送登录请求");
+        // 先登录游戏服，登录成功后在 LoginNet 中会请求玩家数据
+        LoginNet.Instance.SendLogin();
+    }
     /// <summary>
     /// 检查本地账号并自动登录
     /// </summary>
@@ -44,7 +54,8 @@ public class LoginManager : GameSingleton<LoginManager>
                 {
                     LogUtlis.Info($"[LoginManager] 自动登录成功，服务器数量: {servers?.Count ?? 0}");
                     // 直接使用服务器返回的完整URL
-                    LoginGameServer(servers[0].url);
+                    CurrentSelectedServer = servers[0];
+                    // LoginGameServer(servers[0].url);
                 }
                 else
                 {
@@ -62,9 +73,9 @@ public class LoginManager : GameSingleton<LoginManager>
     /// 连接游戏服务器
     /// </summary>
     /// <param name="url"></param>
-    public void LoginGameServer(string url)
+    public void LoginGameServer()
     {
-        NetworkManager.Instance.Init(ServerType.Game,url,AccountServiceManager.Instance.CurrentToken);
+        NetworkManager.Instance.Init(ServerType.Game,CurrentSelectedServer.url,AccountServiceManager.Instance.CurrentToken);
     }   
 
     /// <summary>

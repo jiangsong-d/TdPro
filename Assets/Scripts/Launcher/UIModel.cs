@@ -138,107 +138,106 @@ public class UIModel : MonoBehaviour
     {
         if (IsInitFinish)
             yield return new WaitForEndOfFrame();
-        var defaultSize = UIScaler.referenceResolution;
-        var realScreenRatio = Screen.height / (float)Screen.width;
-        var defaultRatio = defaultSize.y / defaultSize.x;
-        if (realScreenRatio > defaultRatio)
-        {
-            ScreenSize = new Vector2(realScreenRatio * defaultSize.x / defaultRatio,
-                                    realScreenRatio * defaultSize.y / defaultRatio);
-        }
-        else if (realScreenRatio < defaultRatio)
-        {
-            ScreenSize = new Vector2(defaultSize.x, defaultSize.x / realScreenRatio);
-        }
-        else
-        {
-            ScreenSize = defaultSize;
-        }
-        if (realScreenRatio >= EditorScreenRatio)
-            CameraFovScale = 1 / (defaultSize.x / ScreenSize.x);
-        else
-            CameraFovHeightScale = 1 / (defaultSize.y / ScreenSize.y);
 
-        if (!IsNotchScreen || IsNotchScreen && ScreenCutPixelY == 0)
+        // 获取CanvasScaler的参考分辨率 (1920x1080)
+        var referenceResolution = UIScaler.referenceResolution;
+        // 获取当前屏幕宽高
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // 计算Canvas的实际尺寸
+        // 假设 Match = 1 (Height)，Canvas高度固定为 referenceResolution.y
+        // Canvas宽度 = Canvas高度 * (屏幕宽 / 屏幕高)
+        float canvasHeight = referenceResolution.y;
+        float canvasWidth = canvasHeight * (screenWidth / screenHeight);
+        
+        // 如果是 Match = 0 (Width) 或者其他值，可以使用更通用的计算，但这里针对横屏 Match Height 优化
+        if (UIScaler.matchWidthOrHeight == 0)
         {
-            //基于Screen.safeArea修正
-            if (ScreenCutPixelY == 0 && (Screen.height - Screen.safeArea.height != 0 || Screen.safeArea.y > 0))
+            canvasWidth = referenceResolution.x;
+            canvasHeight = canvasWidth * (screenHeight / screenWidth);
+        }
+        else if (UIScaler.matchWidthOrHeight != 1)
+        {
+            // 混合模式，这里简化处理，建议横屏游戏使用 Match Height (1)
+            // 重新计算 scaleFactor
+            float logWidth = Mathf.Log(screenWidth / referenceResolution.x, 2);
+            float logHeight = Mathf.Log(screenHeight / referenceResolution.y, 2);
+            float logWeightedAverage = Mathf.Lerp(logWidth, logHeight, UIScaler.matchWidthOrHeight);
+            float scaleFactor = Mathf.Pow(2, logWeightedAverage);
+            
+            canvasWidth = screenWidth / scaleFactor; // 这里 scaleFactor 是 屏幕/Canvas 的比例? 
+            // CanvasScaler 源码逻辑: scaleFactor = 屏幕像素 / Canvas像素
+            // 所以 CanvasSize = ScreenSize / scaleFactor
+            // 实际上 CanvasScaler 设置 Canvas.scaleFactor.
+            // 我们这里反推 Canvas 宽高:
+            // CanvasScaler 实际上是修改 Canvas 的 scale。
+            // Canvas 宽高 * scale = Screen 宽高.
+            // 所以 Canvas 宽高 = Screen 宽高 / scale.
+            // 这里的 scale 是根据 match 计算出来的。
+            
+            // 简单起见，直接使用 RectTransform 的 rect (需要等待一帧?)
+            // 既然我们在 WaitForEndOfFrame 之后，可以直接取 UICanvasRect.rect
+            if (UICanvasRect != null)
             {
-                IsNotchScreen = true;
-                ScreenCutPixelY = Mathf.Max(Screen.height - Screen.safeArea.height, Screen.safeArea.y);
+                canvasWidth = UICanvasRect.rect.width;
+                canvasHeight = UICanvasRect.rect.height;
             }
         }
+
+        ScreenSize = new Vector2(canvasWidth, canvasHeight);
+
+        // 计算 Safe Area (刘海屏适配)
+        Rect safeArea = Screen.safeArea;
+        
+        // 将 Safe Area 转换到 Canvas 坐标系
+        // Scale = Canvas Height / Screen Height (在 Match Height 模式下)
+        float scale = canvasHeight / screenHeight;
+        
+        float safeAreaLeft = safeArea.x * scale;
+        float safeAreaRight = (screenWidth - safeArea.xMax) * scale;
+        float safeAreaTop = (screenHeight - safeArea.yMax) * scale;
+        float safeAreaBottom = safeArea.y * scale;
+
+        // 横屏主要关注左右刘海 (X轴)
+        ScreenCutPixelX = Mathf.Max(safeAreaLeft, safeAreaRight);
+        // 竖直方向通常较少，但也记录
+        ScreenCutPixelY = Mathf.Max(safeAreaTop, safeAreaBottom);
+
+        IsNotchScreen = (ScreenCutPixelX > 0 || ScreenCutPixelY > 0);
 
 #if UNITY_EDITOR
         if (TestNotchScreen)
         {
-            //工具测试强制打开
             IsNotchScreen = true;
-            if (ScreenCutPixelY == 0)
-            {
-                ScreenCutPixelY = Screen.height * 0.1f / 2;
-            }
+            // 编辑器模拟刘海，假设左边或右边有遮挡
+            ScreenCutPixelX = Mathf.Max(ScreenCutPixelX, 100); 
         }
 #endif
-        //基于标识修正
-        if (IsNotchScreen && ScreenCutPixelY == 0)
-        {
-            ScreenCutPixelY = 160;
-        }
 
-        //大于21：9 4：3的适配尺寸时 动态加黑边控制两侧及上下。 适配背景尺寸出图，采用1680X960.
-        //兼容刘海屏，如果超宽 + 刘海屏，那就看超出宽度和刘海屏宽度，取最大值
-        float ScreenCutPixelX = 0.0f;
-        if (realScreenRatio > EditorScreenRatio219 && ScreenSize.x > 1920)
-        {
-            ScreenCutPixelX = Mathf.Max(ScreenSize.x - 1080, ScreenCutPixelX);
-        }
-        if (realScreenRatio < EditorScreenRatio43 && ScreenSize.y > 1920)
-        {
-            ScreenCutPixelY = ScreenSize.y - 1920;
-        }
+        // 针对超宽屏或特殊比例的额外处理 (可选)
+        // 例如：如果屏幕太宽 (21:9)，可能限制 UI 内容区域在 1920 或 2000 宽
+        // 这里暂时只做 Safe Area 适配
 
-        //#if UNITY_EDITOR
-        //修正开发屏幕视图分辨率小于实际分辨率带来的误差
-        //if (Screen.width < ScreenSize.x)
-        //{
-        //    ScreenCutPixelX *= (Screen.width / ScreenSize.x);
-        //}
-        //else if (ScreenSize.x < Screen.width)
-        //{
-        //    ScreenCutPixelX *= (ScreenSize.x / Screen.width);
-        //}
-
-        //if (Screen.height < ScreenSize.y)
-        //{
-        //    ScreenCutPixelY *= (Screen.height / ScreenSize.y);
-        //}
-        //else if (ScreenSize.y < Screen.height)
-        //{
-        //    ScreenCutPixelY *= (ScreenSize.y / Screen.height);
-        //}
-        //#endif
- 
         IsInitFinish = true;
 
+        // 应用适配到指定节点
         for (int i = 0; i < NeedAdapterRects.Length; i++)
         {
-            //NeedAdapterRects[i].sizeDelta = new Vector2(-ScreenCutPixelX * 2, NeedAdapterRects[i].sizeDelta.y);
-            // NeedAdapterRects[i].sizeDelta = new Vector2(-ScreenCutPixelX, -ScreenCutPixelY);
-            NeedAdapterRects[i].offsetMax = new Vector2(-ScreenCutPixelX, -ScreenCutPixelY/2);
-            NeedAdapterRects[i].offsetMin = new Vector2(ScreenCutPixelX, 0);
-            // NeedAdapterRects[i].localPosition = new Vector3 (0,-ScreenCutPixelY / 2,0);
+            if (NeedAdapterRects[i] == null) continue;
+
+            // 设置 Padding
+            // offsetMin.x = Left, offsetMin.y = Bottom
+            // offsetMax.x = -Right, offsetMax.y = -Top
+            NeedAdapterRects[i].offsetMin = new Vector2(ScreenCutPixelX, 0); 
+            NeedAdapterRects[i].offsetMax = new Vector2(-ScreenCutPixelX, 0);
+            
+            // 如果需要上下适配，可以取消注释下面这行
+            // NeedAdapterRects[i].offsetMin = new Vector2(ScreenCutPixelX, ScreenCutPixelY);
+            // NeedAdapterRects[i].offsetMax = new Vector2(-ScreenCutPixelX, -ScreenCutPixelY);
         }
 
-                LogUtlis.Info($"defaultSize:{defaultSize},width:{Screen.width},height:{Screen.height}," +
-           $"realScreenRatio:{realScreenRatio},defaultRatio:{defaultRatio}" + $",ScreenSize:{ScreenSize}," +
-           $"CameraFovScale:{CameraFovScale},CameraFovHeightScale:{CameraFovHeightScale},IsNotchScreen:{IsNotchScreen}," +
-           $"safeArea:{Screen.safeArea},ScreenCutPixelX:{ScreenCutPixelX}," +
-           $"sizeDelta:{ NeedAdapterRects[0].sizeDelta},anchoredPosition: { NeedAdapterRects[0].anchoredPosition}");
-
-#if UNITY_EDITOR
-        
-#endif
+        LogUtlis.Info($"UI适配完成: ScreenSize:{ScreenSize}, SafePaddingX:{ScreenCutPixelX}, SafePaddingY:{ScreenCutPixelY}, IsNotch:{IsNotchScreen}");
     }
 
 

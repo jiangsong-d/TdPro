@@ -56,7 +56,9 @@ public class LoginNet : GameSingleton<LoginNet>
 
         LogUtlis.Info($"[LoginNet] 游戏服登录成功! PlayerId={response.PlayerId}, PlayerName={response.PlayerName}");
         
-        // TODO: 保存玩家信息，进入游戏主界面
-        // PlayerManager.Instance.SetPlayerInfo(response.PlayerInfo);
+        // 游戏服登录成功后，请求玩家数据
+        LogUtlis.Info("[LoginNet] 开始请求玩家数据...");
+        PlayerDataNet.Instance.SendGetPlayerData();
+        LoadingManager.Instance.SwitchScene(LoadSceneType.Main);
     }
 }

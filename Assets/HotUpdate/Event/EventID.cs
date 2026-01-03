@@ -4,6 +4,8 @@
 
     public static int NetError = EventNumberUtil.GetEventID();
 
+    public static int WebSocketConnected = EventNumberUtil.GetEventID();
+
     #endregion
     
     #region 塔防网络事件
